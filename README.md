@@ -45,3 +45,4 @@ If behavior does not start immediately after granting permissions, quit and rela
 - `Sources/MorTyping/UI/ContentView.swift`: main configuration screen
 - `Sources/MorTyping/UI/GlassStyle.swift`: reusable liquid glass background and cards
 # MorTyping
+# MorTyping
