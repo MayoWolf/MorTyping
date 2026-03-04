@@ -1,38 +1,43 @@
 # MorTyping
 
-MorTyping is a macOS SwiftUI app that types clipboard text character-by-character, triggered by a configurable multi-press hotkey.
+MorTyping is a macOS app that types clipboard text character-by-character using a configurable multi-press hotkey.
 
-## Features
+## For End Users (No Xcode Needed)
 
-- Liquid glass-inspired UI with teal accent styling
-- Theme mode selection: `System`, `Light`, `Dark`
-- Configurable hotkey
-- Configurable required press count (multi-tap)
-- Configurable multi-tap timing window
-- Configurable per-character typing delay
-- Manual `Type Clipboard Now` action
-- Global key listening while the app is open
+1. Download `MorTyping.dmg` from your release.
+2. Open the DMG.
+3. Drag `MorTyping.app` into `Applications`.
+4. Launch `MorTyping`.
+5. Approve macOS privacy prompts when asked.
 
-## Requirements
+End users do not need Xcode or the Swift toolchain.
 
-- macOS 13+
-- Xcode / Swift toolchain with Swift 6.2
+## Build a .app and .dmg (Maintainer)
 
-## Run
+From the project root:
 
 ```bash
-cd /Users/wolfnazari/MorTyping
+./scripts/make-dmg.sh
+```
+
+Output files:
+
+- `dist/MorTyping.app`
+- `dist/MorTyping-macOS.zip`
+- `dist/MorTyping.dmg`
+
+## Local Dev Run (Source)
+
+```bash
 swift run
 ```
 
 ## Permissions
 
-For global key detection and synthetic typing:
+For global key detection and synthetic typing, macOS may require:
 
-- `System Settings -> Privacy & Security -> Accessibility`
-- `System Settings -> Privacy & Security -> Input Monitoring`
-
-If behavior does not start immediately after granting permissions, quit and relaunch the app.
+- `Privacy & Security -> Accessibility`
+- `Privacy & Security -> Input Monitoring`
 
 ## Project Structure
 
@@ -43,8 +48,5 @@ If behavior does not start immediately after granting permissions, quit and rela
 - `Sources/MorTyping/Core/TypingEngine.swift`: global key monitoring + clipboard typing orchestration
 - `Sources/MorTyping/Core/InputTyper.swift`: low-level synthetic keystroke typing
 - `Sources/MorTyping/UI/ContentView.swift`: main configuration screen
-- `Sources/MorTyping/UI/GlassStyle.swift`: reusable liquid glass background and cards
-# MorTyping
-# MorTyping
-# MorTyping
-# MorTyping
+- `scripts/package-app.sh`: build and package standalone `.app` + `.zip`
+- `scripts/make-dmg.sh`: create drag-to-Applications DMG
